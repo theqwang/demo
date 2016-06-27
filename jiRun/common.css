@@ -1,0 +1,974 @@
+@charset "utf-8";
+/*++++++++++++++++++++++++++++++++++全局通用设置++++++++++++++++++++++++++++++++++++++++++++++*/
+body, ul, ol, li, h1, h2, h3, h4, p, figure {
+	margin: 0;
+	padding: 0;
+} 
+body {
+	font-family: "Hiragino Sans GB","Microsoft YaHei",SimHei,Helvetica,Arial,sans-serif;
+}
+div, input, button, figure {
+	box-sizing: border-box;
+}
+a {
+	text-decoration: none;
+}
+ul {
+	list-style: none;
+}
+div {
+	display: block;
+}
+/* 图片自适应:达到图片自身最大width后就不会再自适应窗口大小 */
+img {
+	display: block;
+	/*width: 100%;*/
+	max-width: 100%;
+	height: auto;
+}
+.none, 
+.visible-xs {
+	display: none;
+}
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	height: 0;
+	visibility: hidden;
+}
+.btn-green {
+	background-color: #458b00;
+	color: #fff;
+	padding: 3px 6px;
+	border-radius: 4px;
+}
+/*++++++++++++++++++++++++++++++++++++index设置+++++++++++++++++++++++++++++++++++++++++++++++++*/
+#header {
+	width: 100%;
+	height: 70px;
+	/* 给头部添加一个阴影，更加立体 */
+	background-color: #333;
+	box-shadow: 1px 5px 5px rgba(0,0,0,0.3);
+	/* 因为下面的图片部分为了使搜索框水平和垂直居中，父元素使用了relative定位，则父元素脱离了文档流，在文档流之上了，会把
+	头部的box-shadow效果挡住，所以这里头部也必须是relative定位，而且设置z-index使头部高于下面的图片，这样才能显示出头
+	部的box-shadow */
+	/* header固定在顶部 */
+	position: fixed;
+	top: 0;
+	z-index: 9999;
+}
+#header .center {
+	max-width: 1263px;
+	height: 70px;
+	/* 导航居中 */
+	margin: 0 auto;
+}
+#header .logo {
+	width: 30%;
+	font:35px "Hiragino Sans GB";
+	line-height: 70px;
+	color: #fff;
+	float: left;
+	margin-left: 20px;
+}
+#header .link {
+	width: 55%;
+	float: right;
+	height: 70px;
+}
+#header .link ul {
+	list-style: none;
+}
+#header .link li {
+	float: left;
+	width: 25%;
+}
+#header .link a {
+	/* 让超链接变成一个块!!!!!!从而使得block超链接在鼠标悬停时整个block都变色 */
+	display: block;
+	/* 让超链接文字在block中水平居中 */
+	text-align: center;
+	/* 垂直居中 */
+	line-height: 70px;
+	color: #ddd;
+}
+#header .link a:hover,
+#header .active a {
+	/* 悬停时整个超链接block都变色 */
+	background-color: #000;
+	color: #fff;
+}
+.adver {
+	padding-top: 70px;
+	position: relative;
+}
+.adver img {
+	margin: 0 auto;
+}
+/* 搜索框 */
+.adver .center {
+	/* 下面的设置是为了水平和垂直方向都居中 */
+	width: 40%;
+	height: 60px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -10px 0 0 -20%;
+	background-color: #000;
+	opacity: 0.6;
+	border-radius: 10px;
+}
+.adver .copy {
+	opacity: 1;
+	background-color: transparent;
+	padding: 3px 3px 0 3px;
+}
+.adver .search {
+	width: 70%;
+	height: 52px;
+	padding: 0 10px;
+	font-size: 23px;
+	border: 1px solid #666;
+	border-right: 3px solid #000;
+	border-radius: 10px;
+	background-color: #fff;
+	outline: none;
+	color: #666;
+	display: block;
+	float: left;
+}
+.adver .button {
+	width: 30%;
+	height: 54px;
+	font-size: 23px;
+	border: 1px solid #666;
+	color: #666;
+	font-weight: bold;
+	background-color: #eee;
+	border-radius: 10px;
+	cursor: pointer;
+	display: block;
+	float: right;
+}
+/* ---------------热门旅游区域------------- */
+#tour {
+	max-width: 1263px;
+	/*height: 1160px;*/
+	/*background-color: gray;*/
+	margin: 0 auto;
+	text-align: center;
+}
+#tour .center h2 {
+	margin: 20px 0;
+	font-size: 45px;
+	/* 控制字符间空白 */
+	letter-spacing: 2px;
+	color: #666;
+}
+#tour .center p {
+	color: #666;
+	margin: 10px 5px;
+}
+#tour figure {
+	border: 1px solid #ddd;
+	/* figure本身为block元素，为了让其三个figure一行且控制他们的宽高，只能display为inline-block */
+	display: block;
+	width: 32%;
+	float: left;
+	padding: 4px;
+	border-radius: 4px;
+	margin: 15px .4%;
+	text-align: left;
+	position: relative;
+}
+#tour figure img {
+	vertical-align: middle;
+	width: 100%;
+}
+#tour figure figcaption {
+	font-size: 14px;
+	color: #777;
+	line-height: 1.5;
+	letter-spacing: 1px;
+	padding: 7px 0 5px 0;
+}
+/* 控制文字为2行，溢出会隐藏 */
+#tour figure .title-box {
+	height: 40px;
+	overflow: hidden;
+}
+#tour figure .title {
+	color: #333;
+	font-weight: normal;
+}
+#tour .sat {
+	float: right;
+	font-size: 13px;
+	color: #999;
+	font-style: normal;
+	position: relative;
+	top: 4px;
+	right: 5px;
+
+}
+#tour .price {
+	font-size: 14px;
+	color: #f60;
+}
+#tour .price strong {
+	font-size: 20px;
+	letter-spacing: 1px;
+}
+#tour .type{
+	width: 90px;
+	height: 25px;
+	color: #fff;
+	font-size: 14px;
+	background-color: #59b200;
+	line-height: 25px;
+	text-align: center;
+	position: absolute;
+	top: 4px;
+	left: 4px;
+}
+/*+++++++++++++++++++++++++++++++++++++++++主体与侧边部分+++++++++++++++++++++++++++++++++++++++++++++*/
+#headline {
+	max-width: 1920px;
+	margin: 0 auto;
+	padding-top: 70px;
+}
+/* 主体内容部分 */
+#container {
+	max-width: 1263px;
+	margin: 30px auto;
+}
+/* 侧边栏部分 */
+#container .sidebar {
+	width: 28%;
+	float: right;
+	margin-right: 10px;
+	text-align: center;
+	font-size: 14px;
+}
+.sidebar .sidebox {
+	border: 1px solid #eee;
+	margin-bottom: 10px;
+}
+.sidebar .sidebox h2 {
+	font-size: 20px;
+	font-weight: normal;
+	color: #666;
+	letter-spacing: 1px;
+	text-indent: 8px;
+	height: 40px;
+	line-height: 40px;
+	background-color: #fafafa;
+	text-align: left;
+}
+.sidebar .tag {
+	padding: 10px 0;
+}
+.recommend .tag li {
+	display: inline-block;
+	width: 31%;
+	height: 35px;
+	line-height: 35px;
+	margin-bottom: 4px;
+	background-color: #eee;
+}
+.recommend .tag a {
+	display: block;
+	color: #999;
+}
+.recommend .tag a:hover {
+	color: #fff;
+	background-color: #458b00;
+}
+.hot .figure {
+	padding: 10px 0;
+}
+.hot figure {
+	width: 49%;
+	display: inline-block;
+	color: #666;
+	padding:4px;
+}
+.hot figcaption {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.hot figure img {
+	width: 100%;
+}
+.treasure .box {
+	padding: 10px 0;
+}
+.treasure li {
+	display: inline-block;
+	width: 49%;
+	height: 35px;
+	line-height: 35px;
+	color: #999;
+	margin-bottom: 4px;
+}
+/* 通过背景添加超链接前面的小图标,最后两个值是控制图标的位置 */
+.treasure a.plane {
+	background: #eee url(img/plane.png) no-repeat 10px center;
+}
+.treasure a.weather {
+	background: #eee url(img/cloud.png) no-repeat 10px center;
+}
+.treasure a.train {
+	background: #eee url(img/train.png) no-repeat 10px center;
+}
+.treasure a {
+	display: block;
+	color: #999;
+}
+.treasure a:hover {
+	background-color: #458b00;
+	color: #fff;
+}
+/* 主体内容部分 */
+#container .list {
+	width: 68%;
+	float: left;
+	margin:0 5px;
+	font-size: 18px;
+	color: #666;
+}
+.list h2 {
+	font-size: 30px;
+	line-height: 30px;
+	font-weight: normal;
+	border-bottom: 1px dashed #aaa;
+	padding-bottom: 15px;
+	margin-top: 5px;
+}
+/*+++++++++++++++++++++++++++++++++++++information部分+++++++++++++++++++++++++++++++++++++++++++*/
+/* information内容部分 */
+.nav-bar {
+	width: 99%;
+	height: 45px;
+	line-height: 45px;
+	background-color: #eee;
+}
+.nav-bar a {
+	color: #666;
+}
+.nav-bar li {
+	display: inline-block;
+	text-align: center;
+}
+.nav-tab ul {
+	float: left;
+}
+.nav-tab li {
+	width: 150px;
+	height: 43px;
+	font-size: 18px;
+}
+.nav-tab li.active {
+	background-color: #fff;
+	border-top: 2px solid #458b00;
+	position: relative;
+	left: 1px;
+}
+.nav-pill ul {
+	float: right;
+	padding-right: 10px;
+}
+.nav-pill li {
+	width: 60px;
+	height: 45px;
+	font-size: 16px;
+}
+.nav-pill a.active, .nav-pill a:hover {
+	background-color: #458b00;
+	color: #fff;
+	padding: 4px 8px;
+	border-radius: 4px;
+}
+/* 内容部分 */
+.content {
+	width: 99%;
+	margin: 10px 0 5px 0;
+	border: 1px solid #ddd;
+	color: #666;
+	position: relative;	
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.content:after {
+	content: ".";
+	display: block;
+	clear: both;
+	height: 0;
+	visibility: hidden;
+}
+.content img {
+	float: left;
+	width: 45%;
+}
+.content figcaption {
+	float: right;
+	width: 55%;
+}
+.content .headgroup {
+	width: 275px;
+}
+.content .headgroup h2 {
+	font-size: 24px;
+	font-weight: normal;
+	padding: 10px 0 10px 25px;
+	color: #333;
+	border: none;
+}
+.content .headgroup h3 {
+	font-size: 16px;
+	font-weight: normal;
+	padding: 10px 0 10px 25px;
+	line-height: 1.5;
+}
+.content .info {
+	width: 300px;
+	padding-left: 25px;
+	font-size: 14px;
+	line-height: 1.5;
+}
+.content .info mark {
+	background-color: #fff;
+	color: #458b00;
+	border: 1px solid #458b00;
+	border-radius: 4px;
+	padding: 2px;
+}
+.content .buy {
+	width: 190px;
+	position: absolute;
+	top: 60px;
+	right: 0;
+}
+.content .buy strong {
+	color: #f60;
+	margin-bottom: 10px;
+	font-size: 24px;
+}
+.content .buy s {
+	font-size: 12px;
+	color: #999;
+}
+.content .now a {
+	display: inline-block;
+	width: 140px;
+	height: 35px;
+	background-color: #f60;
+	border: 1px solid #f60;
+	line-height: 35px;
+	text-align: center;
+	border-radius: 5px;
+	color: #fff;
+}
+/* 用css实现三角形 */
+.content .sale-bg {
+	width: 0;
+	height: 0;
+	position: absolute;
+	top: 0;
+	right: 0;
+	border-top: 60px solid #FFFFCC;
+	border-left: 60px solid rgba(0,0,0,0);
+} 
+/* 折扣数字 */
+.content .sale-num {
+	width: 40px;
+	height: 15px;
+	font-size: 13px;
+	color: #f60;
+	font-weight: bold;
+	position: absolute;
+	top: 14px;
+	right: 0;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+.content .type {
+	position: absolute;
+	top: -20px;
+	left: 0;
+	color: #fff;
+	width: 90px;
+	height: 25px;
+	background-color: #458b00;
+	line-height: 25px;
+	text-align: center;
+	font-size: 16px;
+}
+.content footer {
+	width: 518px;
+	height: 30px;
+	line-height: 30px;
+	position: absolute;
+	bottom: 0;
+	text-indent: 25px;
+	letter-spacing: 1px;
+	font-size: 16px;
+}
+.content time {
+	color: #458b00;
+}
+/* 加载更多 */
+.information .more {
+	width: 99%;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	margin: 25px 0;
+	border: 1px solid #ccc;
+	background-color: #fafafa;
+	border-radius: 10px;
+	font-size: 18px;
+	color: #666;
+	cursor: pointer;
+} 
+/*++++++++++++++++++++++++++++++++++订购机票的CSS+++++++++++++++++++++++++++++++++++++++++++*/
+.list .type {
+	margin: 20px 0 10px 0;
+}
+.list .type ul {
+	margin-left: 16px;
+	display: inline-block;
+} 
+.list .type li {
+	display: inline-block;
+	margin-left: 14px;
+	font-size: 16px;
+	cursor: pointer;
+}
+.list .ticket-city, .list .ticket-time, .list .order {
+	display: inline-block;
+	line-height: 3;
+}
+.list .ticket-city, .ticket-time {
+	width: 43%;
+}
+.ticket label {
+	width: 15%;
+}
+.list input[type=text], input[type=date] {
+	width: 65%;
+	height: 30px;
+	padding: 5px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	margin-left: 16px;
+	/*font-size: 18px;*/
+	color: #666;
+}
+.list .order {
+	width: 10%;
+}
+.list .order input[type=submit] {
+	display: inline-block;
+	width: 80px;
+	height: 80px;
+	line-height: 80px;
+	background-color: #f60;
+	color: #fff;
+	border-radius: 4px;
+	border: none;
+	font-size: 18px;
+	position: relative;
+	top: -25px;
+	left: 5px;
+}
+.list table {
+	width: 98%;
+	border: 1px solid #ddd;
+	text-align: center;
+	font-size: 18px;
+	border-collapse: collapse;
+	margin-top: 20px;
+}
+.list table td {
+	border-bottom: 1px solid #ddd;
+	height: 50px;
+	line-height: 50px;
+}
+.list table .price {
+	color: #f60;
+}
+.list table a {
+	background-color: #f60;
+	color: #fff;
+	padding: 4px 8px;
+	border-radius: 4px;
+	font-size: 16px;
+}
+.list table tr:nth-child(2n) {
+	background-color: #f4f4f4;
+}
+.list table tr .more {
+	background-color: #fff;
+	color: #666;
+	border: none;
+}
+/*+++++++++++++++++++++++++++++++++++++++++about部分+++++++++++++++++++++++++++++++++++++++++++++*/
+.about p {
+	line-height: 2;
+	margin-top: 20px;
+	/*text-indent: 32px;*/
+}
+.about address {
+	margin-top: 20px;
+	font-style: normal;
+	line-height: 1.6;
+}
+/*+++++++++++++++++++++++++++++++++++++++++footer部分+++++++++++++++++++++++++++++++++++++++++++++*/
+#footer {
+	width: 100%;
+	/*min-width: 1263px;*/
+	background-color: #222;
+	clear: both;
+	margin-top: 10px;
+}
+#footer .top {
+	max-width: 1263px;
+	height: 270px;
+	margin: 0 auto;
+}
+#footer .footer-mobile {
+	width: 100%;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	color: #777;
+}
+#footer .bottom {
+	height: 80px;
+	background-color: #111;
+	color: #777;
+	text-align: center;
+	line-height: 80px;
+	border-top: 1px solid #444;
+}
+#footer .block {
+	width: 33.33%;
+	height: 270px;
+	display: inline-block;
+	/*text-align: left;*/
+	/* 神奇的属性 */
+	vertical-align: top;
+	color: #ccc;
+	float: left;
+}
+#footer .block h2 {
+	font-size: 23px;
+	margin: 20px 0 0 20px;
+	font-weight: normal;
+}
+#footer hr {
+	width: 90%;
+	border: 1px dashed #333;
+}
+#footer ul {
+	list-style: none;
+	/* 文字缩进，除了margin也可以用text-index */
+	/*margin: 15px 0 0 20px;*/
+	text-indent: 20px;
+	color: #777;
+	font-size: 17px;
+	line-height: 2;
+}
+/*++++++++++++++++++++++++++++++++++++媒体查询+++++++++++++++++++++++++++++++++++++++++++++++++*/
+/* 分辨率参考bootstrap */
+/* 大屏幕lg：主要是PC端 */
+@media (min-width: 1200px) {}
+/* 中等屏幕md：分辨率低的PC端 */
+@media (min-width: 992px) and (max-width: 1199px) {
+	.adver .center {
+		width: 50%;
+		margin: -10px 0 0 -25%;
+	}
+	.hidden-md {
+		display: none;
+	}
+	.content .buy {
+		position: absolute;
+		bottom: 5px;
+		top: auto;
+		right: auto;
+		margin-left: 25px;
+	}
+}
+/* 小屏幕sm：主要是iPad端 */
+@media (min-width: 768px) and (max-width: 991px) {
+	.adver .center {
+		width: 60%;
+		margin: -10px 0 0 -30%;
+	}
+	.adver .search,
+	.adver .button {
+		font-size: 20px;
+	}
+	#tour .center h2 {
+		font-size: 40px;
+	}
+	.hidden-md,
+	.hidden-sm {
+		display: none;
+	}
+	#container .list {
+		width: 98%;
+	}
+	.content h2,
+	.about h2,
+	.content .price strong {
+		font-size: 28px;
+	}
+	.about p,
+	.about address {
+		font-size: 22px;
+	}
+	.content .buy {
+		position: absolute;
+		bottom: 5px;
+		top: auto;
+		right: auto;
+		margin-left: 25px;
+	}
+}
+/* 超小屏幕xs：手机端 */
+@media (min-width: 480px) and (max-width: 767px) {
+	/* iPad分辨率以下隐藏网站logo */
+	.hidden-md,
+	.hidden-sm,
+	.hidden-xs {
+		display: none;
+	}
+	.visible-xs {
+		display: block;
+	}
+	#header .link {
+		width: 100%;
+	}
+	/* 减小header的height */
+	#header,
+	#header .center,
+	#header .link,
+	#header .link a {
+		height: 45px;
+		line-height: 45px;
+	}
+	.adver,
+	#headline {
+		padding-top: 45px;
+	}
+	.adver .center {
+		width: 70%;
+		height: 53px;
+		margin: -10px 0 0 -35%;
+	}
+	.adver .search,
+	.adver .button {
+		font-size: 18px;
+		height: 45px;
+	}
+	#footer {
+		font-size: 14px;
+	}
+	#footer .bottom {
+		height: 40px;
+		line-height: 40px;
+	}
+	#tour .center h2 {
+		font-size: 35px;
+	}
+	#tour figure {
+		width: 48%;
+	}
+	#container .list {
+		width: 98%;
+	}
+	.about h2 {
+		font-size: 24px;
+	}
+	.content .headgroup h2 {
+		font-size: 20px;
+	}
+	.about p,
+	.about address {
+		font-size: 18px;
+	}
+	.list .ticket-city,
+	.list .ticket-time, 
+	.list .order {
+		display: block;
+		line-height: 2.5;
+	}
+	.list .ticket-city, 
+	.ticket-time {
+		width: 99%;
+	}
+	.list input[type=text], 
+	.list input[type=date] {
+		width: 99%;
+		height: 45px;
+		margin: 0;
+	}
+	.list .order {
+		width: 35%;
+		margin: 10px auto;
+	}
+	.list .order input[type=submit] {
+		display: block;
+		position: static;
+		width: 100%;
+		height: 45px;
+		line-height: 45px;
+	}
+	.content .buy {
+		position: absolute;
+		bottom: 5px;
+		top: auto;
+		right: auto;
+		margin-left: 25px;
+	}
+	.content .headgroup h2 {
+		padding: 4px 0 4px 25px;
+	}
+	.content .headgroup h3 {
+		padding: 4px 0 4px 25px;
+	}
+
+}
+/* 低分辨率手机端xx */
+@media (max-width: 479px) {
+	.hidden-md,
+	.hidden-sm,
+	.hidden-xs,
+	.hidden-xx {
+		display: none;
+	}
+	.visible-xs {
+		display: block;
+	}
+	#header .link {
+		width: 100%;
+	}
+	#header,
+	#header .center,
+	#header .link,
+	#header .link a {
+		height: 45px;
+		line-height: 45px;
+	}
+	.adver,
+	#headline {
+		padding-top: 45px;
+	}
+	.adver .center {
+		width: 80%;
+		height: 48px;
+		margin: -10px 0 0 -40%;
+	}
+	.adver .search,
+	.adver .button {
+		height: 40px;
+		font-size: 15px;
+	}
+	#footer .bottom,
+	#footer .footer-mobile {
+		height: 36px;
+		line-height: 36px;
+	}
+	#tour .center h2 {
+		font-size: 25px;
+	}
+	#tour figure {
+		width: 99%;
+	}
+	#container .list {
+		width: 98%;
+	}
+	.list h2 {
+		font-size: 24px;
+	}
+	.content .headgroup h2 {
+		font-size: 16px;
+	}
+	.nav-tab li,
+	.information .more,
+	.content .price strong,
+	#tour .center p,
+	.about p,
+	.about address,
+	.ticket,
+	.ticket input,
+	.ticket table,
+	.ticket table a {
+		font-size: 14px;
+	}
+	.content .type,
+	.content .headgroup h3,
+	#footer {
+		font-size: 12px;
+	}
+	.list .ticket-city,
+	.list .ticket-time, 
+	.list .order {
+		display: block;
+		line-height: 2.5;
+	}
+	.list .ticket-city, 
+	.ticket-time {
+		width: 99%;
+	}
+	.list input[type=text], 
+	.list input[type=date] {
+		width: 99%;
+		height: 45px;
+		margin: 0;
+	}
+	.list .order {
+		width: 35%;
+		margin: 10px auto;
+	}
+	.list .order input[type=submit] {
+		display: block;
+		position: static;
+		width: 100%;
+		height: 45px;
+		line-height: 45px;
+	}
+	.content .buy {
+		position: absolute;
+		bottom: 0;
+		top: auto;
+		right: auto;
+		margin-left: 10px;
+	}
+	.content .headgroup h2,
+	.content .headgroup h3 {
+		padding: 0 0 0 10px;
+	}
+	.nav-bar {
+		height: 30px;
+		line-height: 30px;
+	}
+	.content .type {
+		width: 60px;
+		height: 20px;
+		line-height: 20px;
+	}
+	.information .more {
+		height: 35px;
+		line-height: 35px;
+		margin-top: 15px;
+	}
+}
